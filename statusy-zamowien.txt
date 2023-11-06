@@ -1,0 +1,5 @@
+1. "do rozpatrzenia" - klient złożył nowe zamówienie
+2. "przyjęte do realizacji" - koordynator pozytywnie rozpatrzył kwestię przyjęcia zamówienia
+3. "odrzucone" - koordynator odmówił zrealizowania zamówienia
+4. "w drodze" - kierowca odebrał zamówienia z punktu odbioru i transportuje je do punktu docelowego
+5. "dostarczone" - kierowca dostarczył zamówienie do punktu docelowego
