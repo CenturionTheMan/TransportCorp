@@ -1,0 +1,5 @@
+KLASY:
+Order		| zamówienie od klienta
+Form		| forlumarz od klienta
+DataBaseAPI	| interfejs komunikacji system-baza danych
+GUIHandler	| interfejs komunikacji użytklownik-system
