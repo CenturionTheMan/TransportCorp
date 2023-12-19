@@ -1,5 +1,5 @@
 package com.tasnporstcorp.app;
-
+import java.util.*;
 import com.tasnporstcorp.app.orders.*;
 import com.tasnporstcorp.app.users.*;
 
@@ -33,7 +33,7 @@ public class DataBaseAPI {
 	 * 
 	 * @param loginData
 	 */
-	public boolean checkIfAccountExists(String[] loginData) {
+	public boolean checkIfAccountExists(ArrayList<String> loginData) {
 		return false;
 	}
 
@@ -67,7 +67,7 @@ public class DataBaseAPI {
 	 * 
 	 * @param currentUser
 	 */
-	public Order[] getOrdersForUser(LoggedInUser currentUser) {
+	public ArrayList<Order> getOrdersForUser(LoggedInUser currentUser) {
 		// TODO - implement DataBaseAPI.getOrdersForUser
 		throw new UnsupportedOperationException();
 	}
@@ -81,7 +81,7 @@ public class DataBaseAPI {
 		throw new UnsupportedOperationException();
 	}
 
-	public Vehicle[] getAllVehiclesFromDataBase() {
+	public ArrayList<Vehicle> getAllVehiclesFromDataBase() {
 		// TODO - implement DataBaseAPI.getAllVehiclesFromDataBase
 		throw new UnsupportedOperationException();
 	}

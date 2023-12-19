@@ -1,5 +1,5 @@
 package com.tasnporstcorp.app.orders;
-
+import java.util.*;
 import com.tasnporstcorp.app.*;
 import com.tasnporstcorp.app.users.User;
 
@@ -22,9 +22,9 @@ public class OrderCreator {
 	 * 
 	 * @param formData
 	 */
-	public void createNewOrder(String[] formData, User user) {
-		var commodity = new Commodity(formData[0], Double.parseDouble(formData[1]), Double.parseDouble(formData[2]), Double.parseDouble(formData[3]));
-        var order = new Order(commodity, user, formData[4], formData[5], formData[6]);
+	public void createNewOrder(ArrayList<String> formData, User user) {
+		var commodity = new Commodity(formData.get(0), Double.parseDouble(formData.get(1)), Double.parseDouble(formData.get(2)), Double.parseDouble(formData.get(3)));
+        var order = new Order(commodity, user, formData.get(4), formData.get(5), formData.get(6));
         boolean doesOrderExists = dataBaseApi.checkIfOrderExists(order);
         if(doesOrderExists)
         {

@@ -2,6 +2,7 @@ package com.tasnporstcorp.app.users;
 
 import com.tasnporstcorp.app.*;
 import com.tasnporstcorp.app.users.User.UserRole;
+import java.util.*;
 
 public class UserCreator {
 
@@ -22,14 +23,14 @@ public class UserCreator {
 	 * 
 	 * @param loginData
 	 */
-	public void registerNewUser(String[] loginData) {
+	public void registerNewUser(ArrayList<String> loginData) {
 		boolean isUserInDatabase = dataBaseApi.checkIfAccountExists(loginData);
 		if(isUserInDatabase) {
 			guiHandler.showDialogBox("Konto o danym loginie już istnieje");
 			return;
 		}
 
-		User user = new User(loginData[0], loginData[1], loginData[2]);
+		User user = new User(loginData.get(0), loginData.get(1), loginData.get(2));
 		UserRole role = UserRole.None;
 		
 		while (role == UserRole.None) {

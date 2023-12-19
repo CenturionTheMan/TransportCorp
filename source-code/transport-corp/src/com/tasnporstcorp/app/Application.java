@@ -1,5 +1,6 @@
 package com.tasnporstcorp.app;
 
+import java.util.*;
 import com.tasnporstcorp.app.users.*;
 import com.tasnporstcorp.app.orders.*;
 
@@ -35,7 +36,7 @@ public class Application {
 	}
 
 	public void createAccount() {
-		String[] loginData = guiHandler.getLoginData();
+		ArrayList<String> loginData = guiHandler.getLoginData();
 		userCreator.registerNewUser(loginData);
 	}
 
@@ -45,7 +46,7 @@ public class Application {
 	}
 
 	public void placeNewOrder() {
-		String[] formData = guiHandler.getFormData(); 
+		ArrayList<String> formData = guiHandler.getFormData(); 
         orderCreator.createNewOrder(formData, currentUser);
 	}
 

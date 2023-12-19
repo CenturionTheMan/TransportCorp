@@ -1,14 +1,14 @@
 package com.tasnporstcorp.app.orders;
-
+import java.util.*;
 import com.tasnporstcorp.app.users.*;
 
 public class Vehicle {
 
 	private int vehicleId;
 	private User assignedDriver;
-	private String[] assignedRoute;
+	private ArrayList<String> assignedRoute;
 	private String vehicleName;
-	private Order[] transportedOrders;
+	private ArrayList<Order> transportedOrders;
 	private int capacityCm3;
 
 	/**

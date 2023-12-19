@@ -1,6 +1,7 @@
 package com.tasnporstcorp.app;
 
 import java.util.Scanner;
+import java.util.*;
 
 import com.tasnporstcorp.app.orders.*;
 
@@ -37,8 +38,9 @@ public class GUIHandler {
 		throw new UnsupportedOperationException();
 	}
 
-	public String[] getFormData() {
-		return new String[]{"paczka", "1", "1", "1", "01-01-2023", "10-01-2023", "Wrocław, ul. Rynek 4", "Wrocław, ul. Rynek 4"};
+	public ArrayList<String> getFormData() {
+		var tmp = new String[]{"paczka", "1", "1", "1", "01-01-2023", "10-01-2023", "Wrocław, ul. Rynek 4", "Wrocław, ul. Rynek 4"};
+		return new ArrayList<String>(Arrays.asList(tmp));
 	}
 
 	/**
@@ -54,7 +56,7 @@ public class GUIHandler {
 	 * 
 	 * @param orders
 	 */
-	public void showOrderList(Order[] orders) {
+	public void showOrderList(ArrayList<Order> orders) {
 		// TODO - implement GUIHandler.showOrderList
 		throw new UnsupportedOperationException();
 	}
@@ -68,8 +70,9 @@ public class GUIHandler {
 		throw new UnsupportedOperationException();
 	}
 
-	public String[] getLoginData() {
-		return new String[]{"login", "jan", "kowalski"};
+	public ArrayList<String> getLoginData() {
+		var tmp = new String[]{"login", "jan", "kowalski"};
+		return new ArrayList<String>(Arrays.asList(tmp));
 	}
 
 }

@@ -1,11 +1,10 @@
 package com.tasnporstcorp.app.users;
-
 import com.tasnporstcorp.app.users.User.*;
-
+import java.util.*;
 public class LoggedInUser extends User {
 
-	private String[] filtersList;
-	private String[] sortingCriteria;
+	private ArrayList<String> filtersList;
+	private ArrayList<String> sortingCriteria;
 
 	/**
 	 * 
@@ -17,8 +16,8 @@ public class LoggedInUser extends User {
 	LoggedInUser(String login, UserRole role, String firstName, String lastName) {
 		// TODO - implement LoggedInUser.LoggedInUser
 		super(login, firstName, lastName);
-		filtersList = new String[1];
-		sortingCriteria = new String[2];
+		filtersList = new ArrayList<>();
+		sortingCriteria = new ArrayList<>();
 	}
 
 	public void clearFiltersList() {
@@ -45,7 +44,7 @@ public class LoggedInUser extends User {
 		throw new UnsupportedOperationException();
 	}
 
-	public String[] getFiltersList() {
+	public ArrayList<String> getFiltersList() {
 		return this.filtersList;
 	}
 
