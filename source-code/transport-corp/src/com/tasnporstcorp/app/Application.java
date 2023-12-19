@@ -12,10 +12,6 @@ public class Application {
 	private OrderCreator orderCreator;
 	private LoggedInUser currentUser = null;
 
-	/**
-	 * 
-	 * @param args
-	 */
 	public static void main(String[] args) {
 		
 		Application app = new Application();
@@ -41,7 +37,6 @@ public class Application {
 	}
 
 	public void openOrdersList() {
-		// TODO - implement Application.openOrdersList
 		throw new UnsupportedOperationException();
 	}
 
@@ -51,27 +46,22 @@ public class Application {
 	}
 
 	public void createBill() {
-		// TODO - implement Application.createBill
 		throw new UnsupportedOperationException();
 	}
 
 	public void updateOrderStatus() {
-		// TODO - implement Application.updateOrderStatus
 		throw new UnsupportedOperationException();
 	}
 
 	public void processOrder() {
-		// TODO - implement Application.processOrder
 		throw new UnsupportedOperationException();
 	}
 
 	public void manageOrder() {
-		// TODO - implement Application.manageOrder
 		throw new UnsupportedOperationException();
 	}
 
 	private void filterOrderList() {
-		// TODO - implement Application.filterOrderList
 		throw new UnsupportedOperationException();
 	}
 

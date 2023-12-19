@@ -7,13 +7,6 @@ public class Commodity {
 	public double widthCm;
 	public double depthCm;
 
-	/**
-	 * 
-	 * @param name
-	 * @param lengthCm
-	 * @param widthCm
-	 * @param depthCm
-	 */
 	public Commodity(String name, double lengthCm, double widthCm, double depthCm) {
 		this.name = name;
 		this.lengthCm = lengthCm;
@@ -22,7 +15,6 @@ public class Commodity {
 	}
 
 	public double getVolumeCm3() {
-		// TODO - implement Commodity.getVolumeCm3
 		throw new UnsupportedOperationException();
 	}
 

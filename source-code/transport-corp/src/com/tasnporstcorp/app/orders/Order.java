@@ -14,14 +14,6 @@ public class Order {
 	private Vehicle assignedVehicle = null;
 	private String rejectionCause = "";
 
-	/**
-	 * 
-	 * @param commodity
-	 * @param orderer
-	 * @param deliveryDate
-	 * @param senderAddress
-	 * @param receiverAddress
-	 */
 	public Order(Commodity commodity, User orderer, String deliveryDate, String senderAddress, String receiverAddress) {
 		transportedCommodity = commodity;
 		this.orderer = orderer;
@@ -30,29 +22,15 @@ public class Order {
 		this.receiverAddress = receiverAddress;
 	}
 
-	/**
-	 * 
-	 * @param o
-	 */
 	public boolean equals(Object o) {
-		// TODO - implement Order.equals
 		throw new UnsupportedOperationException();
 	}
 
-	/**
-	 * 
-	 * @param newOrderID
-	 */
 	public void setId(int newOrderID) {
 		orderId = newOrderID;
 	}
 
-	/**
-	 * 
-	 * @param assignedVehicle
-	 */
 	public void assignVehicle(Vehicle assignedVehicle) {
-		// TODO - implement Order.assignVehicle
 		throw new UnsupportedOperationException();
 	}
 
@@ -65,7 +43,6 @@ public class Order {
 	}
 
 	public double getPrice() {
-		// TODO - implement Order.getPrice
 		throw new UnsupportedOperationException();
 	}
 
@@ -86,26 +63,18 @@ public class Order {
 	}
 
 	public void acceptOrder() {
-		// TODO - implement Order.acceptOrder
 		throw new UnsupportedOperationException();
 	}
 
-	/**
-	 * 
-	 * @param rejectionCause
-	 */
 	public void rejectOrder(String rejectionCause) {
-		// TODO - implement Order.rejectOrder
 		throw new UnsupportedOperationException();
 	}
 
 	public void setInProgress() {
-		// TODO - implement Order.setInProgress
 		throw new UnsupportedOperationException();
 	}
 
 	public void setDelivered() {
-		// TODO - implement Order.setDelivered
 		throw new UnsupportedOperationException();
 	}
 

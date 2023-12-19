@@ -9,20 +9,11 @@ public class UserCreator {
 	private DataBaseAPI dataBaseApi;
 	private GUIHandler guiHandler;
 
-	/**
-	 * 
-	 * @param guiHandler
-	 * @param dataBaseApi
-	 */
 	public UserCreator(GUIHandler guiHandler, DataBaseAPI dataBaseApi) {
 		this.dataBaseApi = dataBaseApi;
 		this.guiHandler = guiHandler;
 	}
 
-	/**
-	 * 
-	 * @param loginData
-	 */
 	public void registerNewUser(ArrayList<String> loginData) {
 		boolean isUserInDatabase = dataBaseApi.checkIfAccountExists(loginData);
 		if(isUserInDatabase) {
@@ -45,20 +36,11 @@ public class UserCreator {
 		dataBaseApi.postNewUser(user);
 	}
 
-	/**
-	 * 
-	 * @param login
-	 */
 	public LoggedInUser getCurrentUserFromDataBase(String login) {
 		return new LoggedInUser(login, UserRole.Customer, "jan", "kowalski");
 	}
 
-	/**
-	 * 
-	 * @param login
-	 */
 	public User getDriverFromDataBase(String login) {
-		// TODO - implement UserCreator.getDriverFromDataBase
 		throw new UnsupportedOperationException();
 	}
 
@@ -68,11 +50,6 @@ public class UserCreator {
 		private static final String COORDINATOR_KEY = "123";
 		private static final String DRIVER_KEY = "321";
 
-		/**
-		 * 
-		 * @param user
-		 * @param key
-		 */
 		static void assignRoleFromKey(User user, String key) {
 			if(key.equals("")){
 				user.setRole(UserRole.Customer);
