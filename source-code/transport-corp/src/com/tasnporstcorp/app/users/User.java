@@ -27,6 +27,14 @@ public class User {
 		return this.role;
 	}
 
+	public String getFirstName() {
+		return this.firstName;
+	}
+
+	public String getLastName() {
+		return this.lastName;
+	}
+
 	/**
 	 * 
 	 * @param role

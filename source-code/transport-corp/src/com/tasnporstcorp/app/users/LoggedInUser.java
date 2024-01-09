@@ -1,5 +1,4 @@
 package com.tasnporstcorp.app.users;
-import com.tasnporstcorp.app.users.User.*;
 import java.util.*;
 public class LoggedInUser extends User {
 
@@ -13,16 +12,14 @@ public class LoggedInUser extends User {
 	 * @param firstName
 	 * @param lastName
 	 */
-	LoggedInUser(String login, UserRole role, String firstName, String lastName) {
-		// TODO - implement LoggedInUser.LoggedInUser
+	public LoggedInUser(String login, UserRole role, String firstName, String lastName) {
 		super(login, firstName, lastName);
 		filtersList = new ArrayList<>();
 		sortingCriteria = new ArrayList<>();
 	}
 
 	public void clearFiltersList() {
-		// TODO - implement LoggedInUser.clearFiltersList
-		throw new UnsupportedOperationException();
+		filtersList.clear();		
 	}
 
 	/**
@@ -30,8 +27,10 @@ public class LoggedInUser extends User {
 	 * @param positionOnFiltersList
 	 */
 	public void removeFilter(int positionOnFiltersList) {
-		// TODO - implement LoggedInUser.removeFilter
-		throw new UnsupportedOperationException();
+		if(positionOnFiltersList < 0 || positionOnFiltersList >= filtersList.size())
+			throw new IllegalArgumentException();
+
+		filtersList.remove(positionOnFiltersList);
 	}
 
 	/**
@@ -40,8 +39,7 @@ public class LoggedInUser extends User {
 	 * @param condition
 	 */
 	public void addFilter(String attribute, String condition) {
-		// TODO - implement LoggedInUser.addFilter
-		throw new UnsupportedOperationException();
+		filtersList.add(attribute + ": " + condition);
 	}
 
 	public ArrayList<String> getFiltersList() {
@@ -54,8 +52,8 @@ public class LoggedInUser extends User {
 	 * @param ascending
 	 */
 	public void setSortingCriteria(String attribute, boolean ascending) {
-		// TODO - implement LoggedInUser.setSortingCriteria
-		throw new UnsupportedOperationException();
+		sortingCriteria.add(attribute);
+		sortingCriteria.sort((x, y) -> x.compareTo(y));
 	}
 
 }
