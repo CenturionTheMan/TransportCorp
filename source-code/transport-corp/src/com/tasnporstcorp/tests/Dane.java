@@ -16,9 +16,12 @@ public class Dane {
         "=",
     };
 
-    public LoggedInUser[] loggedInUser = {
-        new LoggedInUser("pomidor", User.UserRole.Customer, "Romek", "Kowalski"),
-        new LoggedInUser("cebula", User.UserRole.None, "Mariusz", "Nowak")
+    public LoggedInUser loggedInUser = new LoggedInUser("pomidor", User.UserRole.Customer, "Romek", "Kowalski") 
+    {
+        {
+            addFilter("price", "<");
+            addFilter("volume", "=");
+        }
     };
 
     public Dane() {

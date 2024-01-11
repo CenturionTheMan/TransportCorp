@@ -26,7 +26,7 @@ public class LoggedInUser extends User {
 	 * 
 	 * @param positionOnFiltersList
 	 */
-	public void removeFilter(int positionOnFiltersList) {
+	public void removeFilter(int positionOnFiltersList) throws IllegalArgumentException{
 		if(positionOnFiltersList < 0 || positionOnFiltersList >= filtersList.size())
 			throw new IllegalArgumentException();
 
