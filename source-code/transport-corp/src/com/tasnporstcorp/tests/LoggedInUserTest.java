@@ -19,7 +19,7 @@ public class LoggedInUserTest implements TestExecutionExceptionHandler{
 
     static Dane dane;
 
-    @BeforeAll //punt 2
+    @BeforeAll //punkt 2
     public static void init()
     {
         dane = new Dane();
