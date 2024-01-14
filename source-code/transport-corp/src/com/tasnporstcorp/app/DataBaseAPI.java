@@ -5,6 +5,8 @@ import com.tasnporstcorp.app.users.*;
 
 public class DataBaseAPI {
 
+	private static List<User> users = new ArrayList<>();
+
 	public DataBaseAPI() {
 		
 	}
@@ -22,10 +24,15 @@ public class DataBaseAPI {
 	}
 
 	public boolean checkIfAccountExists(ArrayList<String> loginData) {
-		return false;
+		
+		return users.stream().anyMatch(user -> 
+		user.getLogin().equals(loginData.get(0)) 
+		&& user.getFirstName().equals(loginData.get(1)) 
+		&& user.getLastName().equals(loginData.get(2)));
 	}
 
 	public boolean postNewUser(User user) {
+		users.add(user);
 		return true;
 	}
 
@@ -50,7 +57,11 @@ public class DataBaseAPI {
 	}
 
 	public User getAccount(String login) {
-		throw new UnsupportedOperationException();
+		var tmp = users.stream().filter(user -> user.getLogin().equals(login)).findFirst();
+		if(tmp.isPresent())
+			return tmp.get();
+		else
+			return null;
 	}
 
 }

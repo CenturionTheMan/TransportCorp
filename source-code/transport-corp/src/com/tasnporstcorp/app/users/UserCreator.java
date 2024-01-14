@@ -14,18 +14,32 @@ public class UserCreator {
 		this.guiHandler = guiHandler;
 	}
 
-	public void registerNewUser(ArrayList<String> loginData) {
+	public User registerNewUser(ArrayList<String> loginData, String userKey)
+	{
+		boolean isUserInDatabase = dataBaseApi.checkIfAccountExists(loginData);
+		if(isUserInDatabase) {
+			return null;
+		}
+
+		User user = new User(loginData.get(0), loginData.get(1), loginData.get(2));
+		KeyHandler.assignRoleFromKey(user, userKey);
+
+		dataBaseApi.postNewUser(user);
+		return user;
+	}
+
+	public User registerNewUser(ArrayList<String> loginData) {
 		boolean isUserInDatabase = dataBaseApi.checkIfAccountExists(loginData);
 		if(isUserInDatabase) {
 			guiHandler.showDialogBox("Konto o danym loginie już istnieje");
-			return;
+			return null;
 		}
 
 		User user = new User(loginData.get(0), loginData.get(1), loginData.get(2));
 		UserRole role = UserRole.None;
 		
 		while (role == UserRole.None) {
-			String userKey = guiHandler.showDialogBox("Wprowadź klucz dostępu.");
+			String userKey = "123";//guiHandler.showDialogBox("Wprowadź klucz dostępu.");
 			KeyHandler.assignRoleFromKey(user, userKey);
 			role = user.getRole();
 			if(role == UserRole.None)
@@ -34,14 +48,25 @@ public class UserCreator {
 
 		guiHandler.showMessageBox("Dodano nowe konto użytkownika!");
 		dataBaseApi.postNewUser(user);
+		return user;
 	}
 
 	public LoggedInUser getCurrentUserFromDataBase(String login) {
-		return new LoggedInUser(login, UserRole.Customer, "jan", "kowalski");
+		return new LoggedInUser(dataBaseApi.getAccount(login)); 		
 	}
 
 	public User getDriverFromDataBase(String login) {
-		throw new UnsupportedOperationException();
+		var user = dataBaseApi.getAccount(login); 
+		
+		if(user == null)
+			throw new NullPointerException();
+
+		var role = user.getRole();
+		
+		if(role == UserRole.Driver)
+			return user;
+		else
+			throw new IllegalArgumentException();
 	}
 
 

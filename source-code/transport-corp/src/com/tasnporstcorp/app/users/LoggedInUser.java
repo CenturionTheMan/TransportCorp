@@ -18,6 +18,12 @@ public class LoggedInUser extends User {
 		sortingCriteria = new ArrayList<>();
 	}
 
+	public LoggedInUser(User user) {
+		super(user.getLogin(), user.getFirstName(), user.getLastName());
+		filtersList = new ArrayList<>();
+		sortingCriteria = new ArrayList<>();
+	}
+
 	public void clearFiltersList() {
 		filtersList.clear();		
 	}

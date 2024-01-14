@@ -26,7 +26,7 @@ public class LoggedInUserTest implements TestExecutionExceptionHandler{
     }
 
     //punt 2
-    public static Stream<Arguments> testAddFilterValue()
+    public static Stream<Arguments> addFilterValueSource()
     {
         ArrayList<Arguments> res = new ArrayList<Arguments>();
 
@@ -41,7 +41,7 @@ public class LoggedInUserTest implements TestExecutionExceptionHandler{
 
     //punt 2
     @ParameterizedTest()
-    @MethodSource("testAddFilterValue")
+    @MethodSource("addFilterValueSource")
     public void testAddFilter(String attribute, String condition)
     {
         int prevSize = dane.loggedInUser.getFiltersList().size();
