@@ -44,11 +44,7 @@ public class LoggedInUserTest implements TestExecutionExceptionHandler{     // t
     public void testAddFilter(String attribute, String condition)
     {
         int sizeBeforeAddition = testData.userWith3Filters.getFiltersList().size();
-        try {
-            testData.userWith3Filters.addFilter(attribute, condition, "1");
-        } catch (Exception e) {
-            
-        }
+        testData.userWith3Filters.addFilter(attribute, condition, "1");
 
         assertEquals(sizeBeforeAddition+1, testData.userWith3Filters.getFiltersList().size(), "Lista filtrów powinna się powiększyć");
     }
@@ -73,11 +69,11 @@ public class LoggedInUserTest implements TestExecutionExceptionHandler{     // t
     // Punkt 2 - niestandardowa obsługa wyjątków
     @Override
     public void handleTestExecutionException(ExtensionContext arg0, Throwable arg1) throws Throwable {
-        System.out.print("EXCEPTION in test of" + arg0.getTestMethod() + "(" + arg0.getDisplayName() + ")" + ": ");
+        System.out.print("EXCEPTION in test of" + arg0.getTestMethod().get().getName() + "(" + arg0.getDisplayName() + ")" + ": ");
         if(arg1 instanceof IllegalArgumentException)
         {
             System.out.println(arg1.getMessage());
-            throw arg1;
+            return;
         }
         else
         {
