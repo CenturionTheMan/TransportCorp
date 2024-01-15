@@ -26,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-import com.tasnporstcorp.app.DataBaseAPI;
+import com.tasnporstcorp.app.database.DataBaseAPI;
 import com.tasnporstcorp.app.GUIHandler;
 import com.tasnporstcorp.app.users.UserCreator;
 
@@ -39,22 +39,22 @@ public class UserCreatorTest implements TestExecutionExceptionHandler{
     static UserCreator userCreator;
     static DataBaseAPI dataBaseAPI;
     static GUIHandler guiHandler;
-    static Dane dane;
+    static TestData dane;
 
     @BeforeAll
     public static void Init() {
         guiHandler = new GUIHandler();
         dataBaseAPI = new DataBaseAPI();
         userCreator = new UserCreator(guiHandler, dataBaseAPI);
-        dane = new Dane();
+        dane = new TestData();
     }
 
     public static Stream<Arguments> addFilterValueSource()
     {
         ArrayList<Arguments> res = new ArrayList<Arguments>();
-        for (int i = 0; i < dane.loginsData.length; i++) {
-            var single = dane.loginsData[i];
-            var arg = Arguments.of(single.get(0), single.get(1), single.get(2), dane.keys.get(i));
+        for (int i = 0; i < dane.usersData.size(); i++) {
+            var single = dane.usersData.get(i);
+            var arg = Arguments.of(single[0], single[1], single[2], dane.keys.get(i));
             res.add(arg);
         }
         return res.stream();

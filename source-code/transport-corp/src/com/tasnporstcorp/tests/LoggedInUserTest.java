@@ -1,5 +1,6 @@
 package com.tasnporstcorp.tests;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
@@ -15,60 +16,69 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 @Tag("LoggedInUser") 
-public class LoggedInUserTest implements TestExecutionExceptionHandler{
+public class LoggedInUserTest implements TestExecutionExceptionHandler{     // test implementuje niestandardową obsługę wyjątków
 
-    static Dane dane;
+    static TestData testData;
 
-    @BeforeAll //punkt 2
+    // Punkt 2 - wykorzystanie metody wykonującej się przez wszystkimi testami
+    @BeforeAll 
     public static void init()
     {
-        dane = new Dane();
+        testData = new TestData();
     }
 
-    //punt 2
-    public static Stream<Arguments> addFilterValueSource()
+    // Punkt 2 - metoda generująca dane nt. filtrów ustalonych przez użytkownika w GUI
+    public static Stream<Arguments> getTestFilters()
     {
-        ArrayList<Arguments> res = new ArrayList<Arguments>();
-
-        for (int i = 0; i < dane.filterAttributes.length; i++) {
-            for (int j = 0; j < dane.filterConditions.length; j++) {
-                res.add(Arguments.of(dane.filterAttributes[i], dane.filterConditions[j]));
-            }
-        }
-
-        return res.stream();
+        ArrayList<Arguments> filters = new ArrayList<Arguments>();
+        for (String filterAttribute : testData.testFilterAttributes) 
+            for(String filterCondition : testData.filterConditions)
+                filters.add(Arguments.of(filterAttribute, filterCondition));
+        return filters.stream();
     }
 
-    //punt 2
+    // Punkt 2 - wykorzystane testy wielokrotne, wykorzystujące dane generowane za pomocą metody "getTestFilters()"
     @ParameterizedTest()
-    @MethodSource("addFilterValueSource")
+    @MethodSource("getTestFilters")
+    @ExtendWith(LoggedInUserTest.class)
     public void testAddFilter(String attribute, String condition)
     {
-        int prevSize = dane.loggedInUser.getFiltersList().size();
-        dane.loggedInUser.addFilter(attribute, condition);
-        assertEquals(prevSize + 1, dane.loggedInUser.getFiltersList().size());
+        int sizeBeforeAddition = testData.userWith3Filters.getFiltersList().size();
+        testData.userWith3Filters.addFilter(attribute, condition, "1");
+
+        assertEquals(sizeBeforeAddition+1, testData.userWith3Filters.getFiltersList().size(), "Lista filtrów powinna się powiększyć");
     }
 
-    //punt 2
+    // Punkt 2 - wykorzystane testy wielokrotne, wykorzystujące dane generowane z wartości oddzielanych przecinkami
     @ParameterizedTest()
     @ExtendWith(LoggedInUserTest.class)
-    @CsvSource({"2", "1", "0"})
+    @CsvSource({
+        "100",      // za duży indeks  
+        "1",        // dobry indeks
+        "0",        // dobry indeks
+        "-1"        // za mały indeks
+    })
     public void testRemoveFilter(int indexOfFilter)
     {
-        int prevSize = dane.loggedInUser.getFiltersList().size();
-        dane.loggedInUser.removeFilter(indexOfFilter);
-        assertEquals(prevSize - 1, dane.loggedInUser.getFiltersList().size());
+        int sizeBeforeDeletion = testData.userWith3Filters.getFiltersList().size();
+        testData.userWith3Filters.removeFilter(indexOfFilter);
+
+        assertEquals(sizeBeforeDeletion-1, testData.userWith3Filters.getFiltersList().size());
     }
 
-    //punt 2
+    // Punkt 2 - niestandardowa obsługa wyjątków
     @Override
     public void handleTestExecutionException(ExtensionContext arg0, Throwable arg1) throws Throwable {
-       if(arg1 instanceof IllegalArgumentException)
+        System.out.print("EXCEPTION in test of" + arg0.getTestMethod() + "(" + arg0.getDisplayName() + ")" + ": ");
+        if(arg1 instanceof IllegalArgumentException)
         {
-            System.out.println("Exception handled");
+            System.out.println(arg1.getMessage());
             return;
         }
-
+        else
+        {
+            System.out.print("nieznany");
+        }
         throw arg1;
     }
 
