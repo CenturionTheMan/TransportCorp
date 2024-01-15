@@ -53,7 +53,10 @@ public class UserCreator {
 	}
 
 	public LoggedInUser getCurrentUserFromDataBase(String login) {
-		return new LoggedInUser(dataBaseApi.getAccount(login)); 		
+		User current_user = dataBaseApi.getAccount(login);
+		if(current_user == null)
+			return null;
+		return new LoggedInUser(current_user); 		
 	}
 
 	public User getDriverFromDataBase(String login) {

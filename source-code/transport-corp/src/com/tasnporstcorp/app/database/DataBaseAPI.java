@@ -5,8 +5,8 @@ import com.tasnporstcorp.app.users.*;
 
 public class DataBaseAPI {
 
-	private static List<User> users = new ArrayList<>();
-	public static List<Order> orders = new ArrayList<>();
+	private List<User> users = new ArrayList<>();
+	public List<Order> orders = new ArrayList<>();
 
 	public DataBaseAPI() {
 		
@@ -38,8 +38,7 @@ public class DataBaseAPI {
 	}
 
 	public boolean postNewUser(User user) {
-		users.add(user);
-		return true;
+		return users.add(user);
 	}
 
 	public void updateVehicleRoute(Vehicle parameter) {

@@ -1,9 +1,11 @@
 package com.tasnporstcorp.tests;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Tag;
@@ -37,17 +39,8 @@ public class ApplicationTest implements TestExecutionExceptionHandler{
     static Application app;
 
     @BeforeAll
-    public static void setup()
-    {
+    public static void init(){
         app = new Application();
-    }
-
-    @Test
-    @Order(2)
-    public void testLogin()
-    {
-        boolean result = app.login("login1");
-        assertTrue(result);
     }
 
     @ParameterizedTest
@@ -61,6 +54,19 @@ public class ApplicationTest implements TestExecutionExceptionHandler{
         tmp.add(lastName);
         GUIHandler.loginData = tmp;
         assertTrue(app.createAccount());
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+        "login1, true",         // istniejący użytkownik
+        "abcdef, false",        // nieistniejący użytkownik
+        "login2, true"          // istniejący użytkownik
+    })
+    @Order(2)
+    public void testLogin(String login, boolean userExist)
+    {
+        boolean result = app.login(login);
+        assertTrue(result == userExist);
     }
 
     public static Stream<Arguments> placeNewOrderSource()
@@ -101,7 +107,7 @@ public class ApplicationTest implements TestExecutionExceptionHandler{
     @Override
     public void handleTestExecutionException(ExtensionContext arg0, Throwable arg1) throws Throwable {
         if(arg1 instanceof UnsupportedOperationException)
-            System.out.println("EXCEPTION in test of" + arg0.getTestMethod() + "(" + arg0.getDisplayName() + ")" + ": " + arg1.getMessage());
+            System.out.println("EXCEPTION in test of" + arg0.getTestMethod().get().getName() + "(" + arg0.getDisplayName() + ")" + ": " + arg1.getMessage());
         else
             throw arg1;
 
