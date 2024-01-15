@@ -6,21 +6,27 @@ import com.tasnporstcorp.app.users.*;
 public class DataBaseAPI {
 
 	private static List<User> users = new ArrayList<>();
+	public static List<Order> orders = new ArrayList<>();
 
 	public DataBaseAPI() {
 		
 	}
 
 	public int getNextOrderId() {
-		return 1;
+		if(orders.size() > 0)
+			return orders.stream().max(Comparator.comparing(Order::getId)).get().getId() + 1;
+		else
+			return 0;
 	}
 
 	public boolean checkIfOrderExists(Order orderToCheck) {
-		return false;
+		if(orders.size() == 0)
+			return false;
+		return orders.stream().anyMatch(order -> order == orderToCheck);
 	}
 
 	public boolean postNewOrder(Order order) {
-		return true;
+		return orders.add(order);
 	}
 
 	public boolean checkIfAccountExists(ArrayList<String> loginData) {
@@ -57,6 +63,8 @@ public class DataBaseAPI {
 	}
 
 	public User getAccount(String login) {
+		if(users.size() == 0)
+			return null;
 		var tmp = users.stream().filter(user -> user.getLogin().equals(login)).findFirst();
 		if(tmp.isPresent())
 			return tmp.get();

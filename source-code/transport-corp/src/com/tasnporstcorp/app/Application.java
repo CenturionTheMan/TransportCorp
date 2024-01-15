@@ -17,7 +17,7 @@ public class Application {
 		
 		Application app = new Application();
 		app.createAccount();
-		app.login();
+		app.login("login");
 		app.placeNewOrder();
 	}
 
@@ -28,13 +28,16 @@ public class Application {
 		userCreator = new UserCreator(guiHandler, dataBaseApi);
 	}
 
-	public void login() {
-		currentUser = userCreator.getCurrentUserFromDataBase("login");
+	public boolean login(String login) {
+		currentUser = userCreator.getCurrentUserFromDataBase(login);
+		return currentUser != null;
 	}
 
-	public void createAccount() {
+	public boolean createAccount() {
 		ArrayList<String> loginData = guiHandler.getLoginData();
-		userCreator.registerNewUser(loginData);
+		//var user = userCreator.registerNewUser(loginData);
+		var user = userCreator.registerNewUser(loginData, "123");
+		return user != null;
 	}
 
 	public void openOrdersList() {

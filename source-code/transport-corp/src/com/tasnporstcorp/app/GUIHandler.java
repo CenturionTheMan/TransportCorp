@@ -38,8 +38,11 @@ public class GUIHandler {
 		throw new UnsupportedOperationException();
 	}
 
+	public static ArrayList<String> formData = null;
 	public ArrayList<String> getFormData() {
-		var tmp = new String[]{"paczka", "1", "1", "1", "01-01-2023", "10-01-2023", "Wrocław, ul. Rynek 4", "Wrocław, ul. Rynek 4"};
+		if(formData != null)
+			return formData;
+		var tmp = new String[]{"paczka", "1", "1", "1", "01-01-2023", "Wrocław, ul. Rynek 4", "Wrocław, ul. Rynek 4"};
 		return new ArrayList<String>(Arrays.asList(tmp));
 	}
 
@@ -70,7 +73,11 @@ public class GUIHandler {
 		throw new UnsupportedOperationException();
 	}
 
+	public static ArrayList<String> loginData = null;
 	public ArrayList<String> getLoginData() {
+		if (loginData != null) {
+			return loginData;
+		}
 		var tmp = new String[]{"login", "jan", "kowalski"};
 		return new ArrayList<String>(Arrays.asList(tmp));
 	}
