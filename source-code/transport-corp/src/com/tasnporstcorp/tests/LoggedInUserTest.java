@@ -44,7 +44,11 @@ public class LoggedInUserTest implements TestExecutionExceptionHandler{     // t
     public void testAddFilter(String attribute, String condition)
     {
         int sizeBeforeAddition = testData.userWith3Filters.getFiltersList().size();
-        testData.userWith3Filters.addFilter(attribute, condition, "1");
+        try {
+            testData.userWith3Filters.addFilter(attribute, condition, "1");
+        } catch (Exception e) {
+            
+        }
 
         assertEquals(sizeBeforeAddition+1, testData.userWith3Filters.getFiltersList().size(), "Lista filtrów powinna się powiększyć");
     }
@@ -73,7 +77,7 @@ public class LoggedInUserTest implements TestExecutionExceptionHandler{     // t
         if(arg1 instanceof IllegalArgumentException)
         {
             System.out.println(arg1.getMessage());
-            return;
+            throw arg1;
         }
         else
         {
