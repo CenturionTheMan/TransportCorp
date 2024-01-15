@@ -3,9 +3,8 @@ package com.tasnporstcorp.tests;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Tag;
@@ -18,17 +17,11 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.lang.reflect.Array;
-import java.sql.DatabaseMetaData;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Stream;
-
 
 import com.tasnporstcorp.app.Application;
 import com.tasnporstcorp.app.GUIHandler;
-import com.tasnporstcorp.app.database.DataBaseAPI;
-import com.tasnporstcorp.app.users.User;
 
 
 // TESTS FOR 4.
@@ -56,17 +49,25 @@ public class ApplicationTest implements TestExecutionExceptionHandler{
         assertTrue(app.createAccount());
     }
 
+    @Test
+    @Order(4)
+    public void testWrongLogin()
+    {
+        boolean result = app.login("abcdef"); // nieistniejący użytkownik
+        assertFalse(result);
+    }
+
+
     @ParameterizedTest
     @CsvSource({
         "login1, true",         // istniejący użytkownik
-        "abcdef, false",        // nieistniejący użytkownik
         "login2, true"          // istniejący użytkownik
     })
     @Order(2)
-    public void testLogin(String login, boolean userExist)
+    public void testLogin(String login)
     {
         boolean result = app.login(login);
-        assertTrue(result == userExist);
+        assertTrue(result);
     }
 
     public static Stream<Arguments> placeNewOrderSource()

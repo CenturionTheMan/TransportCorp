@@ -1,5 +1,6 @@
 package com.tasnporstcorp.tests;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -64,6 +65,12 @@ public class LoggedInUserTest implements TestExecutionExceptionHandler{     // t
         testData.userWith3Filters.removeFilter(indexOfFilter);
 
         assertEquals(sizeBeforeDeletion-1, testData.userWith3Filters.getFiltersList().size());
+    }
+
+    @Test
+    public void testGetFiltersList()
+    {
+        assertNotNull(testData.userWith3Filters.getFiltersList());
     }
 
     // Punkt 2 - niestandardowa obsługa wyjątków
