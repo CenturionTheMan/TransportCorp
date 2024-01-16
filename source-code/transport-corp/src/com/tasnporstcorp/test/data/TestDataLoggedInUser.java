@@ -1,4 +1,4 @@
-package com.tasnporstcorp.tests;
+package com.tasnporstcorp.test.data;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import com.tasnporstcorp.app.users.LoggedInUser;
 import com.tasnporstcorp.app.users.User;
 import java.util.ArrayList;
 
-public class TestData {
+public class TestDataLoggedInUser {
     // Używane w testach atrybuty, po których filtrowano
     public String[] testFilterAttributes = {
         Filter.ORDER_PRICE,
@@ -30,6 +30,16 @@ public class TestData {
         Filter.LESS_EQUAL
     };
 
+    // Używane w testach wartości kryteriów filtrowania
+    public String[] filterConditionsValues = {
+        "1",
+        "-2",
+        "4.56",
+        "-0.56",
+        "01-04-2024",
+        "05-13-1879"
+    };
+
     // Testowy użytkownik ze zdefiniowanym 3 filtrami
     public LoggedInUser userWith3Filters = new LoggedInUser("pomidor45", User.UserRole.Customer, "Romek", "Kowalski") 
     {
@@ -40,18 +50,26 @@ public class TestData {
         }
     };
 
+    // Testowy użytkownik bez filtrów
+    public LoggedInUser userWithNoFilters = new LoggedInUser(
+        "xenon", 
+        User.UserRole.Coordinator, 
+        "Aleksander", 
+        "Kujawski"
+    );
+
     // Klucze rejestracji
     public final String COORDINATOR_KEY = "123";
     public final String DRIVER_KEY = "321";
     public List<String> keys = List.of("123", "321", "");
 
     // Dane użytkowników
-    public ArrayList<String[]> usersData;
+    public ArrayList<String[]> registerData;
 
-    public TestData() {
-        usersData = new ArrayList<>();
-        usersData.add(new String[]{"pomidor4", "John", "Doe"});
-        usersData.add(new String[]{"pomidor5", "Jane", "Smith"});
-        usersData.add(new String[]{"pomidor6", "Alice", "Johnson"});
+    public TestDataLoggedInUser() {
+        registerData = new ArrayList<>();
+        registerData.add(new String[]{"pomidor4", "John", "Doe"});
+        registerData.add(new String[]{"pomidor5", "Jane", "Smith"});
+        registerData.add(new String[]{"pomidor6", "Alice", "Johnson"});
     }
 }

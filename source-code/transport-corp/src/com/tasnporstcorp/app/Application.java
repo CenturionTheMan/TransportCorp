@@ -44,9 +44,13 @@ public class Application {
 		throw new UnsupportedOperationException();
 	}
 
-	public void placeNewOrder() {
+	/**
+	 * Zamieszcza nowe zamóienie w bazie danych.
+	 * @return Numer nowego zamówienia bądź -1 w przypadku niepowodzenia.
+	 */
+	public int placeNewOrder() {
 		ArrayList<String> formData = guiHandler.getFormData(); 
-        orderCreator.createNewOrder(formData, currentUser);
+        return orderCreator.createNewOrder(formData, currentUser);
 	}
 
 	public void createBill() {
@@ -67,6 +71,18 @@ public class Application {
 
 	private void filterOrderList() {
 		throw new UnsupportedOperationException();
+	}
+
+	public DataBaseAPI getDatabase(){
+		return dataBaseApi;
+	}
+
+	public UserCreator getUserCreator(){
+		return userCreator;
+	}
+
+	public LoggedInUser getCurrentUser(){
+		return currentUser;
 	}
 
 }

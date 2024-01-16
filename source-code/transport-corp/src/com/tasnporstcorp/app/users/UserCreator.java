@@ -62,15 +62,10 @@ public class UserCreator {
 	public User getDriverFromDataBase(String login) {
 		var user = dataBaseApi.getAccount(login); 
 		
-		if(user == null)
-			throw new NullPointerException();
-
-		var role = user.getRole();
-		
-		if(role == UserRole.Driver)
+		if(user != null && user.getRole() == UserRole.Driver)
 			return user;
 		else
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Użytkownik o wskazanym loginie nie jest kierowcą");
 	}
 
 

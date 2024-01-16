@@ -38,11 +38,13 @@ public class LoggedInUser extends User {
 	 * 
 	 * @param positionOnFiltersList
 	 */
-	public void removeFilter(int positionOnFiltersList) throws IllegalArgumentException{
-		if(positionOnFiltersList < 0 || positionOnFiltersList >= filtersList.size())
-			throw new IllegalArgumentException();
-
-		filtersList.remove(positionOnFiltersList);
+	public boolean removeFilter(int positionOnFiltersList) {
+		try {
+			filtersList.remove(positionOnFiltersList);
+		} catch (Exception e) {
+			return false;
+		}
+		return true;
 	}
 
 	/**
@@ -54,21 +56,25 @@ public class LoggedInUser extends User {
 	 * @throws IllegalArgumentException w wypadku, gdy podany zostanie nierozpoznawany przez system atrybut bądź typ
 	 * warunku filtrowania (zdefiniowane w database.Filters)
 	 */
-	public void addFilter(String attribute, String conditionType, String conditionValue) throws IllegalArgumentException {
+	public boolean addFilter(String attribute, String conditionType, String conditionValue) throws IllegalArgumentException {
 		// test poprawności atrybutu i wartości warunku
 		switch (attribute) {
 			case Filter.ORDER_NAME:
 				break;
 			case Filter.COMMODITY_VOLUME:
 				try{
-					Double.parseDouble(conditionValue);
+					double volume = Double.parseDouble(conditionValue);
+					if(volume < 0)
+						throw new Exception();
 				} catch (Exception e){
 					throw new IllegalArgumentException("Niepoprawna objętość");
 				}
 				break;
 			case Filter.ORDER_PRICE:
 				try{
-					Double.parseDouble(conditionValue);
+					double price =  Double.parseDouble(conditionValue);
+					if(price < 0)
+						throw new Exception();
 				} catch (Exception e){
 					throw new IllegalArgumentException("Niepoprawna cena");
 				}
@@ -95,7 +101,7 @@ public class LoggedInUser extends User {
 			throw new IllegalArgumentException("Niepoprawny typ warunku");
 
 		// dodanie filtra
-		filtersList.add(attribute+";"+conditionType+";"+conditionValue);
+		return filtersList.add(attribute+";"+conditionType+";"+conditionValue);
 	}
 
 	public ArrayList<String> getFiltersList() {

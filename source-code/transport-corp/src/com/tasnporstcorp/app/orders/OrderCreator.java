@@ -22,11 +22,18 @@ public class OrderCreator {
     
 
 	/**
-	 * 
-	 * @param formData
+	 * Zamieszcza nowe zamówienie w bazie danych. 
+	 * @param formData dane z formularza wypełnionego przez użytkownika przy pomocy GUI
+     * @return Id nowego zamówienia bądź -1 w przypadku niepowodzenia.
+     * @throws UnsupportedOperationException przy złożenia zamówienia, którego adres nadania i odbioru są identyczne
 	 */
-	public boolean createNewOrder(ArrayList<String> formData, User user) {
-		var commodity = new Commodity(formData.get(0), Double.parseDouble(formData.get(1)), Double.parseDouble(formData.get(2)), Double.parseDouble(formData.get(3)));
+	public int createNewOrder(ArrayList<String> formData, User user) throws UnsupportedOperationException {
+		var commodity = new Commodity(
+            formData.get(0), 
+            Double.parseDouble(formData.get(1)), 
+            Double.parseDouble(formData.get(2)), 
+            Double.parseDouble(formData.get(3))
+        );
         
         if(formData.get(5).equals(formData.get(6)))
         {
@@ -40,7 +47,7 @@ public class OrderCreator {
             //String userInteraction = guiHandler.showDialogBox("Zamówienie o takich parametrach już istnieje. Czy chcesz kontynuować składanie zamówienia?");
             //if(userInteraction.contains("NO"))
             //{
-            return false;
+            return -1;
             //}
         }
 
@@ -51,12 +58,12 @@ public class OrderCreator {
         if(isSuccess)
         {
             //guiHandler.showMessageBox("Dodano nowe zamówienie");
-            return true;
+            return nextOrderId;
         }
         else
         {
             //guiHandler.showMessageBox("Nie udało się dodać zamówienia");
-            return false;
+            return -1;
         }
 	}
 
