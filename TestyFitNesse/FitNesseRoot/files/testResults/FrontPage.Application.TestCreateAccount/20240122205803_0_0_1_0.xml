@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<testResults>
+  <FitNesseVersion>v20231203</FitNesseVersion>
+  <rootPath>FrontPage.Application.TestCreateAccount</rootPath>
+  <result>
+    <counts>
+      <right>0</right>
+      <wrong>0</wrong>
+      <ignores>0</ignores>
+      <exceptions>0</exceptions>
+    </counts>
+    <date>2024-01-22T20:58:03+01:00</date>
+    <runTimeInMillis>4</runTimeInMillis>
+    <content>&lt;br/&gt;&lt;table&gt;
+	&lt;tr&gt;
+		&lt;td&gt;com.tasnporstcorp.test.TestyFitNesse.TestCreateAccount&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;dane&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;pomidor,pomidorNazwa,PomodirNazwisko&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+</content>
+    <relativePageName>TestCreateAccount</relativePageName>
+  </result>
+  <executionLog>
+    <testSystem>fit:fit.FitServer</testSystem>
+    <command>java -cp D:\GoogleDriveMirror\Studia\Studia_sem_5\IO\Laby\TransportCorp\TestyFitNesse\Project\out\production\Project;D:\GoogleDriveMirror\Studia\Studia_sem_5\IO\Laby\TransportCorp\TestyFitNesse\fitnesse-standalone.jar fit.FitServer LAPTOP-82QB9BQF 55847 3863</command>
+    <exitCode>0</exitCode>
+    <stdOut></stdOut>
+    <stdErr></stdErr>
+  </executionLog>
+  <finalCounts>
+    <right>0</right>
+    <wrong>0</wrong>
+    <ignores>1</ignores>
+    <exceptions>0</exceptions>
+  </finalCounts>
+  <totalRunTimeInMillis>396</totalRunTimeInMillis>
+</testResults>
+

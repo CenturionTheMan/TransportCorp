@@ -1,1 +1,3 @@
-!|TestyFitNesse.TestCreateAccount|
+!|com.tasnporstcorp.test.TestyFitNesse.TestCreateAccount|
+|dane									|testCreateAccount?	|
+|pomidor,pomidorNazwa,PomodirNazwisko	|true				|

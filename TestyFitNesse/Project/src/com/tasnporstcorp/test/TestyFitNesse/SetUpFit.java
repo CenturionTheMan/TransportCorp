@@ -6,7 +6,7 @@ import fit.Fixture;
 
 public class SetUpFit extends Fixture{
     
-    public static Application application;
+    static Application application = new Application();
 
     public SetUpFit() {
         application = new Application();

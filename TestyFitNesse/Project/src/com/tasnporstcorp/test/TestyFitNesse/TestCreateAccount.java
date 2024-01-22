@@ -8,7 +8,7 @@ import fit.ColumnFixture;
 import java.util.ArrayList;
 
 public class TestCreateAccount extends ColumnFixture{
-    String dane[];
+    public String dane[];
 
     public boolean testCreateAccount()
     {
@@ -25,7 +25,7 @@ public class TestCreateAccount extends ColumnFixture{
 
         LoggedInUser user = SetUpFit.application.getUserCreator().getCurrentUserFromDataBase(login);
         boolean isNotNull = user != null ;
-        
+
         // assertEquals(user.getLogin(), login);
         // assertEquals(user.getFirstName(), firstName);
         // assertEquals(user.getLastName(), lastName);

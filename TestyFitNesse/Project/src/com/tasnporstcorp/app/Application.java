@@ -16,9 +16,9 @@ public class Application {
 	public static void main(String[] args) {
 		
 		Application app = new Application();
-		app.createAccount();
-		app.login("login");
-		app.placeNewOrder();
+		//app.createAccount();
+		//app.login("login");
+		//app.placeNewOrder();
 	}
 
 	public Application() {

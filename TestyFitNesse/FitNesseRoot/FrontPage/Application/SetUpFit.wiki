@@ -1,1 +1,2 @@
-!|TestyFitNesse.SetUpFit|
+
+!|com.tasnporstcorp.test.TestyFitNesse.SetUpFit|
