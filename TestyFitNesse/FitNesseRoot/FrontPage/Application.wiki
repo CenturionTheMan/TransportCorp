@@ -1,0 +1,10 @@
+---
+Suite
+---
+!1 Test suite ${PAGE_NAME}
+!contents -R2 -g -p -f -h
+
+Application Tests
+
+!path D:\GoogleDriveMirror\Studia\Studia_sem_5\IO\Laby\TransportCorp\TestyFitNesse\Project\out\
+!path D:\GoogleDriveMirror\Studia\Studia_sem_5\IO\Laby\TransportCorp\TestyFitNesse\Project\out\production\Project\com\tasnporstcorp\test\
