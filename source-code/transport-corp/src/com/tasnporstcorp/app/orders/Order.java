@@ -78,6 +78,10 @@ public class Order {
 		throw new UnsupportedOperationException();
 	}
 
+	public int getId() {
+		return this.orderId;
+	}
+
 
 	public enum OrderStatus {
 		OnTheTable,

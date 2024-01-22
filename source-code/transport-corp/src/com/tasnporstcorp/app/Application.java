@@ -2,6 +2,7 @@ package com.tasnporstcorp.app;
 
 import java.util.*;
 import com.tasnporstcorp.app.users.*;
+import com.tasnporstcorp.app.database.DataBaseAPI;
 import com.tasnporstcorp.app.orders.*;
 
 public class Application {
@@ -16,7 +17,7 @@ public class Application {
 		
 		Application app = new Application();
 		app.createAccount();
-		app.login();
+		app.login("login");
 		app.placeNewOrder();
 	}
 
@@ -27,22 +28,29 @@ public class Application {
 		userCreator = new UserCreator(guiHandler, dataBaseApi);
 	}
 
-	public void login() {
-		currentUser = userCreator.getCurrentUserFromDataBase("login");
+	public boolean login(String login) {
+		currentUser = userCreator.getCurrentUserFromDataBase(login);
+		return currentUser != null;
 	}
 
-	public void createAccount() {
+	public boolean createAccount() {
 		ArrayList<String> loginData = guiHandler.getLoginData();
-		userCreator.registerNewUser(loginData);
+		//var user = userCreator.registerNewUser(loginData);
+		var user = userCreator.registerNewUser(loginData, "123");
+		return user != null;
 	}
 
 	public void openOrdersList() {
 		throw new UnsupportedOperationException();
 	}
 
-	public void placeNewOrder() {
+	/**
+	 * Zamieszcza nowe zamóienie w bazie danych.
+	 * @return Numer nowego zamówienia bądź -1 w przypadku niepowodzenia.
+	 */
+	public int placeNewOrder() {
 		ArrayList<String> formData = guiHandler.getFormData(); 
-        orderCreator.createNewOrder(formData, currentUser);
+        return orderCreator.createNewOrder(formData, currentUser);
 	}
 
 	public void createBill() {
@@ -63,6 +71,18 @@ public class Application {
 
 	private void filterOrderList() {
 		throw new UnsupportedOperationException();
+	}
+
+	public DataBaseAPI getDatabase(){
+		return dataBaseApi;
+	}
+
+	public UserCreator getUserCreator(){
+		return userCreator;
+	}
+
+	public LoggedInUser getCurrentUser(){
+		return currentUser;
 	}
 
 }
