@@ -1,5 +1,9 @@
-|FrontPage.Application.SetUpFit||21:25:52 Mon, Jan 22, 2024|
-|FrontPage.Application.TestCreateAccount||21:25:41 Mon, Jan 22, 2024|
-|FrontPage.Application||21:23:38 Mon, Jan 22, 2024|
+|FrontPage.Application.TestUpdateOrderStatus||10:31:48 Tue, Jan 23, 2024|
+|FrontPage.Application.TestPlaceNewOrder||10:31:09 Tue, Jan 23, 2024|
+|FrontPage.Application.TestLogin||10:29:41 Tue, Jan 23, 2024|
+|FrontPage.Application.TestGetDatabase||10:17:21 Tue, Jan 23, 2024|
+|FrontPage.Application.TestCreateAccount||09:58:36 Tue, Jan 23, 2024|
+|FrontPage.Application.SetUpFit||09:07:11 Tue, Jan 23, 2024|
+|FrontPage.Application||08:59:29 Tue, Jan 23, 2024|
 |||20:20:31 Mon, Jan 22, 2024|
 |FrontPage||10:06:42 Mon, Jan 22, 2024|

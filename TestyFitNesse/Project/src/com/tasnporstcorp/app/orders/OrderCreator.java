@@ -28,7 +28,7 @@ public class OrderCreator {
      * @throws UnsupportedOperationException przy złożenia zamówienia, którego adres nadania i odbioru są identyczne
 	 */
 	public int createNewOrder(ArrayList<String> formData, User user) throws UnsupportedOperationException {
-		var commodity = new Commodity(
+        var commodity = new Commodity(
             formData.get(0), 
             Double.parseDouble(formData.get(1)), 
             Double.parseDouble(formData.get(2)), 

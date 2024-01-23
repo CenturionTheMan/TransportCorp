@@ -1,9 +1,12 @@
 package com.tasnporstcorp.app;
 
-import java.util.*;
-import com.tasnporstcorp.app.users.*;
 import com.tasnporstcorp.app.database.DataBaseAPI;
-import com.tasnporstcorp.app.orders.*;
+import com.tasnporstcorp.app.orders.Order;
+import com.tasnporstcorp.app.orders.OrderCreator;
+import com.tasnporstcorp.app.users.LoggedInUser;
+import com.tasnporstcorp.app.users.UserCreator;
+
+import java.util.*;
 
 public class Application {
 
@@ -57,8 +60,12 @@ public class Application {
 		throw new UnsupportedOperationException();
 	}
 
-	public void updateOrderStatus() {
-		throw new UnsupportedOperationException();
+	public boolean updateOrderStatus(int orderId, Order.OrderStatus status) {
+		var order = dataBaseApi.getOrder(orderId);
+		if(order == null) return false;
+
+		order.setOrderStatus(status);
+		return true;
 	}
 
 	public void processOrder() {

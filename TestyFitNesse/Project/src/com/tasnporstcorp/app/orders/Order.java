@@ -22,6 +22,11 @@ public class Order {
 		this.receiverAddress = receiverAddress;
 	}
 
+	public void setOrderStatus(OrderStatus status)
+	{
+		this.status = status;
+	}
+
 	public boolean equals(Object o) {
 		throw new UnsupportedOperationException();
 	}

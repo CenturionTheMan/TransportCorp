@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<testResults>
+  <FitNesseVersion>v20231203</FitNesseVersion>
+  <rootPath>FrontPage.Application.TestLogin</rootPath>
+  <result>
+    <counts>
+      <right>0</right>
+      <wrong>0</wrong>
+      <ignores>0</ignores>
+      <exceptions>1</exceptions>
+    </counts>
+    <date>2024-01-23T09:56:32+01:00</date>
+    <runTimeInMillis>4</runTimeInMillis>
+    <content>&lt;br/&gt;&lt;table&gt;
+	&lt;tr&gt;
+		&lt;td class="error"&gt;com.tasnporstcorp.test.TestyFitNesse.TestLogin&lt;hr&gt;&lt;pre&gt;&lt;div class="fit_stacktrace"&gt;java.lang.NullPointerException: Cannot read field "parts" because "rows" is null
+	at fit.ColumnFixture.doRows(ColumnFixture.java:12)
+	at fit.Fixture.doTable(Fixture.java:156)
+	at fit.Fixture.interpretTables(Fixture.java:101)
+	at fit.Fixture.doTables(Fixture.java:81)
+	at fit.FitServer.process(FitServer.java:81)
+	at fit.FitServer.run(FitServer.java:56)
+	at fit.FitServer.main(FitServer.java:41)
+&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;</content>
+    <relativePageName>TestLogin</relativePageName>
+  </result>
+  <executionLog>
+    <testSystem>fit:fit.FitServer</testSystem>
+    <command>java -cp D:\GoogleDriveMirror\Studia\Studia_sem_5\IO\Laby\TransportCorp\TestyFitNesse\Project\out\production\Project;D:\GoogleDriveMirror\Studia\Studia_sem_5\IO\Laby\TransportCorp\TestyFitNesse\fitnesse-standalone.jar fit.FitServer LAPTOP-82QB9BQF 57671 3863</command>
+    <exitCode>1</exitCode>
+    <stdOut></stdOut>
+    <stdErr></stdErr>
+  </executionLog>
+  <finalCounts>
+    <right>0</right>
+    <wrong>0</wrong>
+    <ignores>0</ignores>
+    <exceptions>1</exceptions>
+  </finalCounts>
+  <totalRunTimeInMillis>512</totalRunTimeInMillis>
+</testResults>
+

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<testResults>
+  <FitNesseVersion>v20231203</FitNesseVersion>
+  <rootPath>FrontPage.Application.TestGetDatabase</rootPath>
+  <result>
+    <counts>
+      <right>0</right>
+      <wrong>0</wrong>
+      <ignores>1</ignores>
+      <exceptions>0</exceptions>
+    </counts>
+    <date>2024-01-23T10:17:02+01:00</date>
+    <runTimeInMillis>3</runTimeInMillis>
+    <content>&lt;br/&gt;&lt;table&gt;
+	&lt;tr&gt;
+		&lt;td&gt;com.tasnporstcorp.test.TestyFitNesse.TestGetDatabase&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td class="ignore"&gt;testGetDatabase?&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+</content>
+    <relativePageName>TestGetDatabase</relativePageName>
+  </result>
+  <executionLog>
+    <testSystem>fit:fit.FitServer</testSystem>
+    <command>java -cp D:\GoogleDriveMirror\Studia\Studia_sem_5\IO\Laby\TransportCorp\TestyFitNesse\Project\out\production\Project;D:\GoogleDriveMirror\Studia\Studia_sem_5\IO\Laby\TransportCorp\TestyFitNesse\fitnesse-standalone.jar fit.FitServer LAPTOP-82QB9BQF 58030 3863</command>
+    <exitCode>0</exitCode>
+    <stdOut></stdOut>
+    <stdErr></stdErr>
+  </executionLog>
+  <finalCounts>
+    <right>0</right>
+    <wrong>0</wrong>
+    <ignores>1</ignores>
+    <exceptions>0</exceptions>
+  </finalCounts>
+  <totalRunTimeInMillis>392</totalRunTimeInMillis>
+</testResults>
+

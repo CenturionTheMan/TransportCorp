@@ -5,8 +5,8 @@ import com.tasnporstcorp.app.users.*;
 
 public class DataBaseAPI {
 
-	private List<User> users = new ArrayList<>();
-	public List<Order> orders = new ArrayList<>();
+	private static List<User> users = new ArrayList<>();
+	public static List<Order> orders = new ArrayList<>();
 
 	public DataBaseAPI() {
 		

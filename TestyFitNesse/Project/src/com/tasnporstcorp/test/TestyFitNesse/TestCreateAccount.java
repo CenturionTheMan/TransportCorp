@@ -1,5 +1,6 @@
 package com.tasnporstcorp.test.TestyFitNesse;
 
+import com.tasnporstcorp.app.Application;
 import com.tasnporstcorp.app.GUIHandler;
 import com.tasnporstcorp.app.users.LoggedInUser;
 
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 
 public class TestCreateAccount extends ColumnFixture{
     public String dane[];
+    Application application = new Application();
 
     public boolean testCreateAccount()
     {
@@ -21,14 +23,15 @@ public class TestCreateAccount extends ColumnFixture{
         registerFormData.add(lastName);
         GUIHandler.loginData = registerFormData;
 
-        boolean isCreated =  SetUpFit.application.createAccount();
+        boolean isCreated =  application.createAccount();
 
-        LoggedInUser user = SetUpFit.application.getUserCreator().getCurrentUserFromDataBase(login);
+        LoggedInUser user = application.getUserCreator().getCurrentUserFromDataBase(login);
         boolean isNotNull = user != null ;
 
-        // assertEquals(user.getLogin(), login);
-        // assertEquals(user.getFirstName(), firstName);
-        // assertEquals(user.getLastName(), lastName);
-        return isCreated && isNotNull;
+
+        boolean isLoginCorrect = user.getLogin() == login;
+        boolean isFirstNameCorrect = user.getFirstName() == firstName;
+        boolean isLastNameCorrect = user.getLastName() == lastName;
+        return isCreated && isNotNull && isLoginCorrect && isFirstNameCorrect && isLastNameCorrect;
     }
 }

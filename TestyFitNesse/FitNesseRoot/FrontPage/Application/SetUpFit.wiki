@@ -1,2 +1,4 @@
-
+---
+Static
+---
 !|com.tasnporstcorp.test.TestyFitNesse.SetUpFit|
