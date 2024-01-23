@@ -1,0 +1,5 @@
+!|com.tasnporstcorp.test.TestyFitNesse.TestPlaceNewOrder|
+|dane																				|testPlaceNewOrder?	|
+|paczka,1,1,1,01-03-2023,Wrocław ul. Rynek 4,Wrocław ul. Grunwaldzka 5				|true				|
+|paczka,2,3,4,01-02-2023,Wrocław ul. Jana Pawła II 10,Wrocław ul. Jana Pawła II 10	|false				|
+|paczka,40,29,6,19-04-2023,Wrocław ul. Plac Hirszfelda 2,Wrocław ul. Bezpieczna 30a	|true				|

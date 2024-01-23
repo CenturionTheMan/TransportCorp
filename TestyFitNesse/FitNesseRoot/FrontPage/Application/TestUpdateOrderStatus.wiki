@@ -1,0 +1,7 @@
+!include TestPlaceNewOrder
+
+!|com.tasnporstcorp.test.TestyFitNesse.TestUpdateOrderStatus|
+|dane|testUpdateOrderStatus?|
+|1,InProgress|true|
+|0,Accepted|true|
+|10,Accepted|false|

@@ -1,0 +1,7 @@
+!include TestCreateAccount
+
+!|com.tasnporstcorp.test.TestyFitNesse.TestLogin|
+|dane	|testLogin?|
+|login1	|true	|
+|abcdef	|false	|
+|login2	|true	|
